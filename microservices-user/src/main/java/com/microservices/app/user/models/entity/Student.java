@@ -2,12 +2,14 @@ package com.microservices.app.user.models.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "students")
@@ -15,6 +17,8 @@ public class Student {
 
     // -----------------------------------------------------------------------------------
     // GeneratedValue(strategy = GenerationType.IDENTITY) -> Id autoincrementable
+    //
+    // Temporal(TemporalType.TIMESTAMP)     -> Tiempo completo, fecha y hora
     // -----------------------------------------------------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +27,14 @@ public class Student {
     private String surname;
     private String email;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date create;
+
+    @PrePersist
+    public void prePersist() {
+        //Guarda la fecha de la creación
+        this.create= new Date();
+    }
 
 // -------------------------Getter and Setter------------------------------------------
 
