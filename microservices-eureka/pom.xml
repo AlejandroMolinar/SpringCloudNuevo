@@ -8,7 +8,7 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.microservices.app.eureka</groupId>
+	<groupId>com.microservices.app</groupId>
 	<artifactId>microservices-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>microservices-eureka</name>

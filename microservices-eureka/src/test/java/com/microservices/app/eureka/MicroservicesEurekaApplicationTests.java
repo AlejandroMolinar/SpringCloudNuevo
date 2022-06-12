@@ -1,10 +1,10 @@
-package com.microservices.app.user.microservicesuser;
+package com.microservices.app.microserviceseureka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MicroservicesUserApplicationTests {
+class MicroservicesEurekaApplicationTests {
 
 	@Test
 	void contextLoads() {
