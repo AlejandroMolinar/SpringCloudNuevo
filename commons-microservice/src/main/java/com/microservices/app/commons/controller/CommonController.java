@@ -1,4 +1,4 @@
-package com.microservices.app.user.controllers;
+package com.microservices.app.commons.controller;
 
 import java.util.Optional;
 
@@ -11,16 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.app.user.models.entity.Student;
-import com.microservices.app.user.service.StudentService;
+import com.microservices.app.commons.service.CommonService;
 
-@RestController
-public class StudentController {
+// @RestController
+public class CommonController<E> {
 
     @Autowired
-    private StudentService service;
+    private CommonService<E> service;
 
     // -----------------------------------------------------------------------------------
     //  Devuelve la lista completa de los estudiantes en un body. 
@@ -33,7 +31,7 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id) {
 
-        Optional<Student> optional= service.findById(id);
+        Optional<E> optional= service.findById(id);
         if (optional.isEmpty()) {
             return ResponseEntity.notFound().build();  
         }
@@ -41,25 +39,25 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Student student){
-        Student student2= service.save(student);
-        return ResponseEntity.status(HttpStatus.CREATED).body(student2);
+    public ResponseEntity<?> save(@RequestBody E entity){
+        E entity2= service.save(entity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(entity2);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Student student, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody E entity, @PathVariable Long id){
         
-        Optional<Student> optional= service.findById(id);
+        Optional<E> optional= service.findById(id);
         if (optional.isEmpty()) {
             return ResponseEntity.notFound().build();  
         }
         
-        Student student2= optional.get();
-        student2.setName(student.getName());
-        student2.setLastname(student.getLastname());
-        student2.setEmail(student.getEmail());
+        E entity2= optional.get();
+        // entity2.setName(entity.getName());
+        // entity2.setLastname(entity.getLastname());
+        // entity2.setEmail(entity.getEmail());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(student2));
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(entity2));
     }
 
     @DeleteMapping("/{id}")

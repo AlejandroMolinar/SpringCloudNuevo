@@ -1,16 +1,18 @@
-package com.microservices.app.user.service;
+package com.microservices.app.commons.service;
 
 import java.util.Optional;
 
-import com.microservices.app.user.models.entity.Student;
 
-public interface StudentService{
+// --------------------------------------------------------
+// <E> --> Generic Value
+// --------------------------------------------------------
+public interface CommonService<E>{
 
-    public Iterable<Student> findAll();
+    public Iterable<E> findAll();
 
-    public Optional<Student> findById(Long id);
+    public Optional<E> findById(Long id);
 
-    public Student save(Student student);
+    public E save(E entity);
 
     public void deleteByID(Long id);
     
