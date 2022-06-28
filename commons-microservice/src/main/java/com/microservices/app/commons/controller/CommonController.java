@@ -9,19 +9,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.microservices.app.commons.service.CommonService;
 
-// @RestController
-public class CommonController<E> {
+public class CommonController<E, S extends CommonService<E>> {
 
     @Autowired
-    private CommonService<E> service;
+    protected S service;
 
     // -----------------------------------------------------------------------------------
-    //  Devuelve la lista completa de los estudiantes en un body. 
+    //  Devuelve la lista completa de la lista en un body. 
     // -----------------------------------------------------------------------------------
     @GetMapping
     public ResponseEntity<?> findAll() {
@@ -42,22 +40,6 @@ public class CommonController<E> {
     public ResponseEntity<?> save(@RequestBody E entity){
         E entity2= service.save(entity);
         return ResponseEntity.status(HttpStatus.CREATED).body(entity2);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody E entity, @PathVariable Long id){
-        
-        Optional<E> optional= service.findById(id);
-        if (optional.isEmpty()) {
-            return ResponseEntity.notFound().build();  
-        }
-        
-        E entity2= optional.get();
-        // entity2.setName(entity.getName());
-        // entity2.setLastname(entity.getLastname());
-        // entity2.setEmail(entity.getEmail());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(entity2));
     }
 
     @DeleteMapping("/{id}")
