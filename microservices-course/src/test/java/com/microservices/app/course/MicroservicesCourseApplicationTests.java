@@ -1,4 +1,4 @@
-package com.microservices.app.course.microservicescourse;
+package com.microservices.app.course;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
