@@ -2,6 +2,7 @@ package com.microservices.app.course.models.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,9 +25,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String name;
-    private String lastname;
-    private String email;
-
+    
+    // @Column(name ="createAt") -- si no se pone, se agrega a la BBDD el nombre original "create"
     @Temporal(TemporalType.TIMESTAMP)
     private Date create;
 
@@ -52,22 +52,6 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Date getCreate() {

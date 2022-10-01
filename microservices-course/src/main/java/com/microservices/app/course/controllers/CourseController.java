@@ -24,12 +24,10 @@ public class CourseController extends CommonController<Course, CourseService> {
             return ResponseEntity.notFound().build();   
         }
         
-        Course couse2= optional.get();
-        couse2.setName(couse.getName());
-        couse2.setLastname(couse.getLastname());
-        couse2.setEmail(couse.getEmail());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(couse2));
+        Course cousedb= optional.get();
+        cousedb.setName(couse.getName());
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cousedb));
     }
 
 
