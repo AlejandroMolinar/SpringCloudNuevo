@@ -17,19 +17,19 @@ import com.microservices.app.course.service.CourseService;
 public class CourseController extends CommonController<Course, CourseService> {
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Course student, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody Course couse, @PathVariable Long id){
         
         Optional<Course> optional= service.findById(id);
         if (optional.isEmpty()) {
             return ResponseEntity.notFound().build();   
         }
         
-        Course student2= optional.get();
-        student2.setName(student.getName());
-        student2.setLastname(student.getLastname());
-        student2.setEmail(student.getEmail());
+        Course couse2= optional.get();
+        couse2.setName(couse.getName());
+        couse2.setLastname(couse.getLastname());
+        couse2.setEmail(couse.getEmail());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(student2));
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(couse2));
     }
 
 

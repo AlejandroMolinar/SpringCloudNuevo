@@ -7,8 +7,7 @@ import com.microservices.app.course.models.entity.Course;
 import com.microservices.app.course.models.repository.CourseRepository;
 
 @Service 
-public class CourseServiceImp extends CommonServiceImp<Course, CourseRepository>
-        implements CourseService {
+public class CourseServiceImp extends CommonServiceImp<Course, CourseRepository>implements CourseService {
 
 
 }

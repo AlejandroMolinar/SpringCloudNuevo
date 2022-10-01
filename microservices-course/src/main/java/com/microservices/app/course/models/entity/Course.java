@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "students")
+@Table(name = "couse")
 public class Course {
 
     // -----------------------------------------------------------------------------------
