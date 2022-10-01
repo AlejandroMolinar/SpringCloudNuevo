@@ -1,4 +1,4 @@
-package com.microservices.app.user.controllers;
+package com.microservices.app.student.controllers;
 
 import java.util.Optional;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.microservices.commons.students.models.entity.Student;
 import com.microservices.app.commons.controller.CommonController;
-import com.microservices.app.user.models.entity.Student;
-import com.microservices.app.user.service.StudentService;
+import com.microservices.app.student.service.StudentService;
 
 @RestController
 public class StudentController extends CommonController<Student, StudentService> {

@@ -1,8 +1,8 @@
-package com.microservices.app.user.models.repository;
+package com.microservices.app.student.models.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.microservices.app.user.models.entity.Student;
+import com.app.microservices.commons.students.models.entity.Student;
 
 public interface StudentRepository extends CrudRepository<Student, Long>{
     
