@@ -1,4 +1,4 @@
-package com.app.microservices.commons.students.commonsstudents;
+package com.app.microservices.commons.students;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
