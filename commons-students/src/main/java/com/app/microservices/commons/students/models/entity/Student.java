@@ -18,7 +18,7 @@ public class Student {
     // -----------------------------------------------------------------------------------
     // GeneratedValue(strategy = GenerationType.IDENTITY) -> Id autoincrementable
     //
-    // Temporal(TemporalType.TIMESTAMP)     -> Tiempo completo, fecha y hora
+    // Temporal(TemporalType.TIMESTAMP) -> Tiempo completo, fecha y hora
     // -----------------------------------------------------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +32,12 @@ public class Student {
 
     @PrePersist
     public void prePersist() {
-        //Guarda la fecha de la creación
-        this.create= new Date();
+        // Guarda la fecha de la creación
+        this.create = new Date();
     }
 
-// -------------------------Getter and Setter------------------------------------------
+    // -------------------------Getter and
+    // Setter------------------------------------------
 
     public Long getId() {
         return Id;
@@ -76,6 +77,24 @@ public class Student {
 
     public void setCreate(Date create) {
         this.create = create;
+    }
+
+    @Override
+    public boolean equals(Object arg0) {
+
+    /***************************************************
+     * EVALUA SI EL "ARG0" ES DEL MISMO TIPO "STUDENT" *
+     * Evalua se el "ARG0" ha sigo instanciada (Iniciada) en Student *
+     ***************************************************/
+        if (this == arg0) {
+            return true;
+        }
+        if (arg0 instanceof Student) {
+            return false;
+        }
+
+        Student other = (Student) arg0;
+        return this.Id !=null && this.Id.equals(other.getId());
     }
 
 }
