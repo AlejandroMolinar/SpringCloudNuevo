@@ -89,7 +89,7 @@ public class Course {
     }
     
     public void deleteStudent(Student student) {
-        this.student.delete(student);   
+        this.student.remove(student);   
     }
 
 }
