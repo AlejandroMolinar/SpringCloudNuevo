@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,12 @@ public class CourseController extends CommonController<Course, CourseService> {
      * de un link, se agrega "{}" y la variable adentro.                             *
      *  @PutMapping("/{id}") <-- En este caso se envia el Id, variable numerica      *
      *********************************************************************************/
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<?> findByStudentId(@PathVariable Long studentId){
+        return ResponseEntity.ok(service.findCourseByStudentId(studentId));
+    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Course couse, @PathVariable Long id) {
@@ -54,8 +61,8 @@ public class CourseController extends CommonController<Course, CourseService> {
 
     }
     
-    @PutMapping("/{id}/delete-students")
-    public ResponseEntity<?> deleteStudents(@RequestBody Student student, @PathVariable Long id) {
+    @PutMapping("/{id}/delete-student")
+    public ResponseEntity<?> deleteStudent(@RequestBody Student student, @PathVariable Long id) {
         
         Optional<Course> optional = service.findById(id);
         if (optional.isEmpty()) {
@@ -68,5 +75,7 @@ public class CourseController extends CommonController<Course, CourseService> {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(coursedb));
 
     }
+
     
+
 }

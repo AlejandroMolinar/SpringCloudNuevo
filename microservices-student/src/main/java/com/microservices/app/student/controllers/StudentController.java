@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,11 @@ public class StudentController extends CommonController<Student, StudentService>
         student2.setEmail(student.getEmail());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(student2));
+    }
+
+    @GetMapping("findstudent/{name}")
+    public ResponseEntity<?> findByNameOrLastname (@PathVariable String name){
+        return ResponseEntity.ok(service.findByNameOrLastname(name));          
     }
 
 
