@@ -19,6 +19,16 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>com.microservices.app.commons</groupId>
+			<artifactId>commons-microservice</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microservices.app.commons.students</groupId>
+			<artifactId>commons-students</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
