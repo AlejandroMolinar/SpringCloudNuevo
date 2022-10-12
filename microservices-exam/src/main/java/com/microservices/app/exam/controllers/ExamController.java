@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.app.commons.controller.CommonController;
-import com.microservices.app.exam.models.entity.Exam;
+import com.microservices.app.exam.models.entity.Exams;
 import com.microservices.app.exam.service.ExamService;
 
 @RestController
-public class ExamController extends CommonController<Exam, ExamService> {
+public class ExamController extends CommonController<Exams, ExamService> {
 
     /*********************************************************************************
      * En los envios o Protocolos HTTP, cuando se quiere enviar un elemento a través *
@@ -23,14 +23,14 @@ public class ExamController extends CommonController<Exam, ExamService> {
      *********************************************************************************/
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Exam couse, @PathVariable Long id) {
+    public ResponseEntity<?> update(@RequestBody Exams couse, @PathVariable Long id) {
 
-        Optional<Exam> optional = service.findById(id);
+        Optional<Exams> optional = service.findById(id);
         if (optional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        Exam coursedb = optional.get();
+        Exams coursedb = optional.get();
         coursedb.setName(couse.getName());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(coursedb));
