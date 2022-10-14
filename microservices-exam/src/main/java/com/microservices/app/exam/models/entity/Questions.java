@@ -1,8 +1,6 @@
 package com.microservices.app.exam.models.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +36,7 @@ public class Questions {
     @JsonIgnoreProperties(value = "questions", allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exam_id")
-    private List<Exams> exams;
+    private Exams exams;
 
     // @Column(name ="createAt") -- si no se pone, se agrega a la BBDD el nombre
     // original "create"
@@ -50,12 +48,6 @@ public class Questions {
         // Guarda la fecha de la creación
         this.create = new Date();
     }
-    // ------------------------Constructor-------------------------------------------------
-
-    public Questions() {
-        this.exams = new ArrayList<Exams>();
-    }
-
     // -------------------------Getter-and-Setter------------------------------------------
 
     public Long getId() {
@@ -79,16 +71,30 @@ public class Questions {
     }
 
     public void setCreate(Date create) {
-        this.create = create;
+        this.create = create;   
     }
 
-    public List<Exams> getExams() {
+    public Exams getExams() {
         return exams;
     }
 
-    public void setExams(List<Exams> exams) {
+    public void setExams(Exams exams) {
         this.exams = exams;
     }
 
+    @Override
+    public boolean equals(Object arg0) {
+        if (this == arg0) {
+            return true;
+        }
+        if (arg0 instanceof Questions) {
+            return false;
+        }
+
+        Questions other = (Questions) arg0;
+        return this.Id !=null && this.Id.equals(other.getId());
+    }
+
+    
     
 }

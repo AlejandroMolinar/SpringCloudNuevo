@@ -64,7 +64,7 @@ public class Exams {
     // ------------------------Constructor-------------------------------------------------
 
     public Exams() {
-        this.questions = new ArrayList<Questions>();
+        this.questions = new ArrayList<>();
     }
 
     // -------------------------Getter-and-Setter------------------------------------------
@@ -98,7 +98,17 @@ public class Exams {
     }
 
     public void setQuestions(List<Questions> questions) {
-        this.questions = questions;
+        this.questions.clear();
+        questions.forEach(this::addQuestion);
     }
 
+    public void addQuestion(Questions question) {
+        this.questions.add(question);
+        question.setExams(this);
+    }
+    
+    public void deleteQuestion(Questions question) {
+        this.questions.remove(question);  
+        question.setExams(null);
+    }
 }
