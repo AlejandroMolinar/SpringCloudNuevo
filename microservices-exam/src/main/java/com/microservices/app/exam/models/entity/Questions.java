@@ -1,15 +1,22 @@
 package com.microservices.app.exam.models.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "questions")
@@ -23,10 +30,15 @@ public class Questions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String name;
+    private String text;
 
-    // @OneToMany(fetch = FetchType.LAZY)
-    // private List<Course> courseList;
+    /*******************************************************
+     * JoinColumn -> Establece una llave Foranea con Exams *
+     *******************************************************/
+    @JsonIgnoreProperties(value = "questions", allowSetters = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "exam_id")
+    private List<Exams> exams;
 
     // @Column(name ="createAt") -- si no se pone, se agrega a la BBDD el nombre
     // original "create"
@@ -40,9 +52,9 @@ public class Questions {
     }
     // ------------------------Constructor-------------------------------------------------
 
-    // public Exam() {
-    //     this.student = new ArrayList<Student>();
-    // }
+    public Questions() {
+        this.exams = new ArrayList<Exams>();
+    }
 
     // -------------------------Getter-and-Setter------------------------------------------
 
@@ -54,12 +66,12 @@ public class Questions {
         Id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String name) {
+        this.text = name;
     }
 
     public Date getCreate() {
@@ -70,5 +82,13 @@ public class Questions {
         this.create = create;
     }
 
+    public List<Exams> getExams() {
+        return exams;
+    }
 
+    public void setExams(List<Exams> exams) {
+        this.exams = exams;
+    }
+
+    
 }
