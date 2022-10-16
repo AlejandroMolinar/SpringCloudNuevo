@@ -90,7 +90,6 @@ public class Questions {
         if (arg0 instanceof Questions) {
             return false;
         }
-
         Questions other = (Questions) arg0;
         return this.Id !=null && this.Id.equals(other.getId());
     }
