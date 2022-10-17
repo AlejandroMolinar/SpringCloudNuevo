@@ -1,4 +1,4 @@
-package com.microservices.app.exam.models.entity;
+package com.microservices.app.commons.exams.models.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

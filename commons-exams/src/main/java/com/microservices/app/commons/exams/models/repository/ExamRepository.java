@@ -1,4 +1,4 @@
-package com.microservices.app.exam.models.repository;
+package com.microservices.app.commons.exams.models.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

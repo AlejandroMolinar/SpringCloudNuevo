@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.app.commons.controller.CommonController;
-import com.microservices.app.exam.models.entity.Exams;
+import com.microservices.app.commons.exams.models.entity.Exams;
 import com.microservices.app.exam.service.ExamService;
 
 @RestController
